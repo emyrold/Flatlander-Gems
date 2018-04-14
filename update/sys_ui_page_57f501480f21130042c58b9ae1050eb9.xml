@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description>This is a SPA store app for Flatlanders</description>
+        <direct>false</direct>
+        <endpoint>x_10032_flatlander_store.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+
+    <html ng-app="gemStore">
+
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous"></link>
+        <link href="b4090dc80f21130042c58b9ae1050e1b.cssdbx" rel="stylesheet" type="text/css"></link>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
+        <script src="x_10032_flatlander.app_js.jsdbx"></script>
+
+    </head>
+
+    <body class="list-group" ng-controller="StoreController as store">
+
+    <!--  Store Header  -->
+    <header>
+        <h1 class="text-center">Flatlander Crafted Gems</h1>
+        <h2 class="text-center">– an Angular store –</h2>
+    </header>
+
+    <!--  Product Container  -->
+    <div class="list-group-item" ng-repeat="product in store.products">
+        <h3>
+            {{product.name}}
+            <em class="pull-right">{{product.price | currency}}</em>
+        </h3>
+        <section ng-show="product.images.length">
+            <img ng-src="{{product.images[0]}}"/>
+            <ul class="list-inline thumbs">
+                <li class="thumbnail" ng-repeat="image in product.images">
+                    <img ng-src="{{image}}"/>
+                </li>
+            </ul>
+        </section>
+
+        <section class="tab" ng-controller="TabController as tab">
+            <ul class="nav nav-pills">
+                <li ng-class="{ active:tab.isSet(1)}">
+                    <a href="" ng-click="tab.setTab(1)">Description</a></li>
+                <li ng-class="{ active:tab.isSet(2)}">
+                    <a href="" ng-click="tab.setTab(2)">Specs</a></li>
+                <li ng-class="{ active:tab.isSet(3)}">
+                    <a href="" ng-click="tab.setTab(3)">Reviews</a></li>
+            </ul>
+            <div class="tab" ng-show="tab.isSet(1)">
+                <h4>Description</h4>
+                <blockquote>{{product.description}}</blockquote>
+            </div>
+            <div class="tab" ng-show="tab.isSet(2)">
+                <h4>Specs</h4>
+                <blockquote>Shine: {{ product.shine }}</blockquote>
+            </div>
+            <div class="tab" ng-show="tab.isSet(3)">
+                <h4>Reviews</h4>
+                <blockquote></blockquote>
+            </div>
+        </section>
+
+    </div>
+    </body>
+    </html>
+</j:jelly>]]></html>
+        <name>store</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>emyrold-dev</sys_created_by>
+        <sys_created_on>2018-04-13 17:07:10</sys_created_on>
+        <sys_id>57f501480f21130042c58b9ae1050eb9</sys_id>
+        <sys_mod_count>36</sys_mod_count>
+        <sys_name>store</sys_name>
+        <sys_package display_value="Flatlander Gems" source="x_10032_flatlander">9c2501080f21130042c58b9ae1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Flatlander Gems">9c2501080f21130042c58b9ae1050e29</sys_scope>
+        <sys_update_name>sys_ui_page_57f501480f21130042c58b9ae1050eb9</sys_update_name>
+        <sys_updated_by>emyrold-dev</sys_updated_by>
+        <sys_updated_on>2018-04-13 23:43:23</sys_updated_on>
+    </sys_ui_page>
+</record_update>
