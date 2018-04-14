@@ -23,6 +23,14 @@ app.controller('TabController', function(){
       };
   });
 
+app.controller('GalleryController', function(){
+	this.current = 0;
+	
+	this.setCurrent = function(value) {
+		this.current = value || 0;
+	};
+});
+
 var gems = [{
 	name: 'Azurite',
 	description: "Some gems have hidden qualities beyond their luster, beyond their shine... Azurite is one of those gems.",
@@ -106,14 +114,14 @@ var gems = [{
         <sys_created_by>emyrold-dev</sys_created_by>
         <sys_created_on>2018-04-13 19:14:38</sys_created_on>
         <sys_id>f71f19880f61130042c58b9ae1050e7f</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>x_10032_flatlander.app_js</sys_name>
         <sys_package display_value="Flatlander Gems" source="x_10032_flatlander">9c2501080f21130042c58b9ae1050e29</sys_package>
         <sys_policy/>
         <sys_scope display_value="Flatlander Gems">9c2501080f21130042c58b9ae1050e29</sys_scope>
         <sys_update_name>sys_ui_script_f71f19880f61130042c58b9ae1050e7f</sys_update_name>
         <sys_updated_by>emyrold-dev</sys_updated_by>
-        <sys_updated_on>2018-04-13 23:45:46</sys_updated_on>
+        <sys_updated_on>2018-04-14 03:21:22</sys_updated_on>
         <use_scoped_format>false</use_scoped_format>
     </sys_ui_script>
 </record_update>
