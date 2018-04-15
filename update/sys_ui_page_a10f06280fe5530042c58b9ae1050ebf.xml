@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description/>
+        <direct>true</direct>
+        <endpoint>x_10032_flatlander_product-description.do</endpoint>
+        <html><![CDATA[<div>
+  <h4>Description</h4>
+  <blockquote>{{product.description}}</blockquote>
+</div>]]></html>
+        <name>product-description</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>emyrold-dev</sys_created_by>
+        <sys_created_on>2018-04-15 11:42:23</sys_created_on>
+        <sys_id>a10f06280fe5530042c58b9ae1050ebf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>product-description</sys_name>
+        <sys_package display_value="Flatlander Gems" source="x_10032_flatlander">9c2501080f21130042c58b9ae1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Flatlander Gems">9c2501080f21130042c58b9ae1050e29</sys_scope>
+        <sys_update_name>sys_ui_page_a10f06280fe5530042c58b9ae1050ebf</sys_update_name>
+        <sys_updated_by>emyrold-dev</sys_updated_by>
+        <sys_updated_on>2018-04-15 11:42:23</sys_updated_on>
+    </sys_ui_page>
+</record_update>

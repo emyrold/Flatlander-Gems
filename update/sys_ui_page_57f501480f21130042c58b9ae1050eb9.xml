@@ -4,97 +4,115 @@
         <category>general</category>
         <client_script/>
         <description>This is a SPA store app for Flatlanders</description>
-        <direct>false</direct>
-        <endpoint>x_10032_flatlander_store.do</endpoint>
-        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
-<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+        <direct>true</direct>
+        <endpoint>x_10032_flatlander_index.do</endpoint>
+        <html><![CDATA[<html ng-app="gemStore">
 
-    <html ng-app="gemStore">
+<head>
+    <meta charset="utf-8"/>
+    <title>AngularJS</title>
+	
+    <link data-require="bootstrap-css" data-semver="3.1.1" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+    <link data-require="semantic-ui@*" data-semver="0.9.6" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.9.6/css/semantic.min.css"/>
+    <script data-require="jquery@*" data-semver="2.0.3" src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script data-require="semantic-ui@*" data-semver="0.9.6" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.9.6/javascript/semantic.min.js"></script>
+    <script data-require="angular.js@1.2.x" src="https://code.angularjs.org/1.2.15/angular.js" data-semver="1.2.15"></script>
+	
+	<link href="b4090dc80f21130042c58b9ae1050e1b.cssdbx" rel="stylesheet" type="text/css"></link>
+    <script src="x_10032_flatlander.app_js.jsdbx"></script>  <!-- app_js -->
 
-    <head>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-              crossorigin="anonymous"></link>
-        <link href="b4090dc80f21130042c58b9ae1050e1b.cssdbx" rel="stylesheet" type="text/css"></link>
+</head>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
-        <script src="x_10032_flatlander.app_js.jsdbx"></script>
-
-    </head>
-
-    <body ng-controller="StoreController as store">
+<body ng-controller="StoreController as store">
+    <!--  Store Header  -->
     <header>
-        <h1 class="text-center">Flatlander Crafted Gems</h1>
-        <h2 class="text-center">– an Angular store –</h2>
+      <h1 class="text-center">Flatlander Crafted Gems</h1>
+      <h2 class="text-center">– an Angular store –</h2>
     </header>
+
+    <!--  Products Container  -->
     <div class="list-group">
-        <div class="list-group-item" ng-repeat="product in store.products">
-            <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
-            <div ng-controller="GalleryController as gallery" ng-show="product.images.length">
-                <div class="img-wrap">
-                    <img ng-src="{{product.images[gallery.current]}}"/>
-                </div>
-                <ul class="img-thumbnails clearfix">
-                    <li class="small-image pull-left thumbnail" ng-repeat="image in product.images">
-                        <img ng-src="{{image}}"/>
-                    </li>
-                </ul>
-            </div>
-            <section ng-controller="TabController as tab">
-                <ul class="nav nav-pills">
-                    <li ng-class="{ active:tab.isSet(1) }">
-                        <a href="" ng-click="tab.setTab(1)">Description</a>
-                    </li>
-                    <li ng-class="{ active:tab.isSet(2) }">
-                        <a href="" ng-click="tab.setTab(2)">Specs</a>
-                    </li>
-                    <li ng-class="{ active:tab.isSet(3) }">
-                        <a href="" ng-click="tab.setTab(3)">Reviews</a>
-                    </li>
-                </ul>
-                <div ng-show="tab.isSet(1)">
-                    <h4>Description</h4>
-                    <blockquote>{{product.description}}</blockquote>
-                </div>
-                <div ng-show="tab.isSet(2)">
-                    <h4>Specs</h4>
-                    <blockquote>Shine: {{product.shine}}</blockquote>
-                </div>
+      <!--  Product Container  -->
+      <div class="list-group-item" ng-repeat="product in store.products">
+        <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
 
-                <!--  Review Tab's Content  -->
-                <div ng-show="tab.isSet(3)">
-                    <!--  Product Reviews List -->
-                    <ul>
-                        <h4>Reviews</h4>
-                        <li ng-repeat="review in product.reviews">
-                            <blockquote>
-                                <strong> {{ review.stars }} Stars</strong>
-                                {{ review.body }}
-                                <cite class="clearfix">— {{ review.author }} </cite>
-                            </blockquote>
-                        </li>
-                    </ul>
-                </div>
+        <!-- Image Gallery  -->
+        <product-gallery></product-gallery>
 
-            </section>
-        </div>
+        <!-- Product Tabs  -->
+        <product-tabs></product-tabs>
+       
+
+          <!--  Description Tab's Content  -->
+          <product-description ng-show="tab.isSet(1)"></product-description>
+
+		  
+          <!--  Spec Tab's Content  -->
+          <div product-specs="#" ng-show="tab.isSet(2)"></div>
+
+          <!--  Review Tab's Content  -->
+          <div ng-show="tab.isSet(3)">
+            <!--  Product Reviews List -->
+            <ul>
+              <h4>Reviews</h4>
+              <li ng-repeat="review in product.reviews">
+                <blockquote>
+                  <strong>{{review.stars}} Stars</strong>
+                  {{review.body}}
+                  <cite class="clearfix">—{{review.author}} on {{review.createdOn | date}}</cite>
+                </blockquote>
+              </li>
+            </ul>
+
+            <!--  Review Form -->
+            <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
+
+              <!--  Live Preview -->
+              <blockquote >
+                <strong>{{reviewCtrl.review.stars}} Stars</strong>
+                {{reviewCtrl.review.body}}
+                <cite class="clearfix">—{{reviewCtrl.review.author}}</cite>
+              </blockquote>
+
+              <!--  Review Form -->
+              <h4>Submit a Review</h4>
+              <fieldset class="form-group">
+                <select ng-model="reviewCtrl.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
+                  <option value="#">Rate the Product</option>
+                </select>
+              </fieldset>
+              <fieldset class="form-group">
+                <textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
+              </fieldset>
+              <fieldset class="form-group">
+                <input ng-model="reviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" />
+              </fieldset>
+              <fieldset class="form-group">
+                <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+              </fieldset>
+            </form>
+          </div>
+      </div>
     </div>
-    </body>
-    </html>
-</j:jelly>]]></html>
-        <name>store</name>
+  </body>
+
+</html>
+
+
+]]></html>
+        <name>index</name>
         <processing_script/>
         <sys_class_name>sys_ui_page</sys_class_name>
         <sys_created_by>emyrold-dev</sys_created_by>
         <sys_created_on>2018-04-13 17:07:10</sys_created_on>
         <sys_id>57f501480f21130042c58b9ae1050eb9</sys_id>
-        <sys_mod_count>44</sys_mod_count>
-        <sys_name>store</sys_name>
+        <sys_mod_count>70</sys_mod_count>
+        <sys_name>index</sys_name>
         <sys_package display_value="Flatlander Gems" source="x_10032_flatlander">9c2501080f21130042c58b9ae1050e29</sys_package>
         <sys_policy/>
         <sys_scope display_value="Flatlander Gems">9c2501080f21130042c58b9ae1050e29</sys_scope>
         <sys_update_name>sys_ui_page_57f501480f21130042c58b9ae1050eb9</sys_update_name>
         <sys_updated_by>emyrold-dev</sys_updated_by>
-        <sys_updated_on>2018-04-14 03:15:57</sys_updated_on>
+        <sys_updated_on>2018-04-15 17:45:51</sys_updated_on>
     </sys_ui_page>
 </record_update>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description/>
+        <direct>true</direct>
+        <endpoint>x_10032_flatlander_product-specs.do</endpoint>
+        <html><![CDATA[<h4>Specs</h4>
+<ul class="list-unstyled">
+    <li>
+        <strong>Shine</strong>
+        : {{product.shine}}
+    </li>
+    <li>
+        <strong>Faces</strong>
+        : {{product.faces}}
+    </li>
+    <li>
+        <strong>Rarity</strong>
+        : {{product.rarity}}
+    </li>
+    <li>
+        <strong>Color</strong>
+        : {{product.color}}
+    </li>
+</ul>]]></html>
+        <name>product-specs</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>emyrold-dev</sys_created_by>
+        <sys_created_on>2018-04-15 11:55:41</sys_created_on>
+        <sys_id>2a42da200fe5530042c58b9ae1050e56</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>product-specs</sys_name>
+        <sys_package display_value="Flatlander Gems" source="x_10032_flatlander">9c2501080f21130042c58b9ae1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Flatlander Gems">9c2501080f21130042c58b9ae1050e29</sys_scope>
+        <sys_update_name>sys_ui_page_2a42da200fe5530042c58b9ae1050e56</sys_update_name>
+        <sys_updated_by>emyrold-dev</sys_updated_by>
+        <sys_updated_on>2018-04-15 11:56:54</sys_updated_on>
+    </sys_ui_page>
+</record_update>
