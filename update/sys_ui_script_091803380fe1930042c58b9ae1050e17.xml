@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <name>x_10032_flatlander.products_js</name>
+        <script><![CDATA[(function() {
+	var app = angular.module('store-directives', []);
+	
+	app.directive("productDescription", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "x_10032_flatlander_product-description.do"
+		};
+	});
+	
+	app.directive("productReviews", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "x_10032_flatlander_product-reviews.do"
+		};
+	});
+	
+	app.directive("productSpecs", function() {
+		return {
+			restrict:"A",
+			templateUrl: "x_10032_flatlander_product-specs.do"
+		};
+	});
+	
+	app.directive("productTabs", function() {
+		return {
+			restrict: "E",
+			templateUrl: "x_10032_flatlander_product-tabs.do",
+			controller: function() {
+				this.tab = 1;
+				
+				this.isSet = function(checkTab) {
+					return this.tab === checkTab;
+				};
+				
+				this.setTab = function(activeTab) {
+					this.tab = activeTab;
+				};
+			},
+			controllerAs: "tab"
+		};
+	});
+	
+	app.directive("productGallery", function() {
+		return {
+			restrict: "E",
+			templateUrl: "x_10032_flatlander_product-gallery.do",
+			controller: function() {
+				this.current = 0;
+				this.setCurrent = function(imageNumber){
+					this.current = imageNumber || 0;
+				};
+			},
+			controllerAs: "gallery"
+		};
+	});
+	
+})();
+]]></script>
+        <script_name>products_js</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>emyrold-dev</sys_created_by>
+        <sys_created_on>2018-04-16 10:29:07</sys_created_on>
+        <sys_id>091803380fe1930042c58b9ae1050e17</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>x_10032_flatlander.products_js</sys_name>
+        <sys_package display_value="Flatlander Gems" source="x_10032_flatlander">9c2501080f21130042c58b9ae1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Flatlander Gems">9c2501080f21130042c58b9ae1050e29</sys_scope>
+        <sys_update_name>sys_ui_script_091803380fe1930042c58b9ae1050e17</sys_update_name>
+        <sys_updated_by>emyrold-dev</sys_updated_by>
+        <sys_updated_on>2018-04-16 10:51:31</sys_updated_on>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>
